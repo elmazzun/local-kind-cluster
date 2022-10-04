@@ -53,7 +53,7 @@ echo
 echo "[9/11] Returning user secret token: copy/paste this to k8s dashboard login page..."
 oc get secret "$admin_user_token" \
     -n kubernetes-dashboard \
-    -o jsonpath='{.data.token}{"\n"}'
+    -o jsonpath='{.data.token}' | base64 -d; echo
 echo
 
 echo "[10/11] Visit following URL and paste the returned token above..."
