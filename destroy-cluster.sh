@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
 
-echo "Stopping kubectl proxy..."
-pkill -9 -f "kubectl proxy"
-echo
+cleanup_cluster() {
+    echo "Stopping kubectl proxy..."
+    pkill -9 -f "kubectl proxy" || true
+    echo
 
-echo "Destroying kind cluster..."
-kind delete cluster --name local-kind-cluster
-echo
+    echo "Stopping kubectl port-foward..."
+    pkill -9 -f "kubectl port-forward" || true
+    echo
+
+    echo "Destroying kind cluster..."
+    kind delete cluster --name local-kind-cluster || true
+    echo
+}

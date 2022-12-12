@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function check_required_sw {
+check_required_sw() {
     if ! go version &> /dev/null; then
         echo "Go not installed"
         return 1

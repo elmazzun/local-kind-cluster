@@ -2,6 +2,8 @@
 
 Cluster locale Kubernetes IN Docker (kind) per sviluppi locali.
 
+La versione di Kubernetes in uso è la 1.25.2
+
 ## Requisiti
 
 go (1.17+), docker, [kind](https://kind.sigs.k8s.io/)

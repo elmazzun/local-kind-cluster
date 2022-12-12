@@ -5,6 +5,9 @@
 set -e
 
 source ./constants.sh
+source ./destroy-cluster.sh
+# Catching CTRL+c
+trap "cleanup_cluster" SIGINT
 
 echo "[1/14] Applying ingress..."
 kubectl apply -f manifests/ingress.yaml
@@ -96,3 +99,5 @@ echo "[14/14] Port forwarding to newly created Prometheus service..."
 kubectl port-forward -n "$PROMETHEUS_NAMESPACE" \
     svc/kube-prometheus-stack-prometheus 9090:9090
 echo
+
+echo "You may now destroy the cluster by hitting CTRL+c"
