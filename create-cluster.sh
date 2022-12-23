@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
+set -e
+
 source preflight-checks.sh
+source ./destroy-cluster.sh
+# Catching CTRL+c
+trap "cleanup_cluster" SIGINT
 
 if ! check_required_sw; then
     echo "Quitting: install required sw before creating kind cluster"

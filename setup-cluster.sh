@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# https://medium.com/@munza/local-kubernetes-with-kind-helm-dashboard-41152e4b3b3d
-
 set -e
 
 source ./constants.sh
@@ -74,6 +72,12 @@ helm install --wait --timeout "$TIMEOUT_READINESS" \
 kubeEtcd:
   service:
     targetPort: 2381
+kubeControllerManager:
+  service:
+    targetPort: 10257
+kubeScheduler:
+  service:
+    targetPort: 10259
 EOF
 echo
 
