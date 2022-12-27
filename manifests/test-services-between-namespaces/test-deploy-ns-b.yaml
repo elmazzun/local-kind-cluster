@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: curl-test-ns-b
+  labels:
+    name: curl-test-ns-b
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: curl-test-b
+  namespace: curl-test-ns-b
+  labels:
+    app: curl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: curl-test-b
+  template:
+    metadata:
+      labels:
+        app: curl-test-b
+    spec:
+      containers:
+      - name: curl
+        image: nginx
+        ports:
+        - containerPort: 80
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: curl-test-svc-b
+  namespace: curl-test-ns-b
+spec:
+  selector:
+    app: curl-b
+  ports:
+  - protocol: TCP
+    port: 8080

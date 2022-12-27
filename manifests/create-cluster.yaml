@@ -1,45 +1,51 @@
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
-kubeadmConfigPatches:
-- |-
-  kind: ClusterConfiguration
-  # configure controller-manager bind address
-  controllerManager:
-    extraArgs:
-      bind-address: 0.0.0.0 # Disable localhost binding
-      secure-port: "0"      # Disable the https
-      port: "10257"         # Enable http on port 10257
-  # configure etcd metrics listen address
-  etcd:
-    local:
-      extraArgs:
-        listen-metrics-urls: http://0.0.0.0:2381
-  # configure scheduler bind address
-  scheduler:
-    extraArgs:
-      bind-address: 0.0.0.0 # Disable localhost binding
-      secure-port: "0"      # Disable the https
-      port: "10259"         # Enable http on port 10259
-- |-
-  kind: KubeProxyConfiguration
-  # configure proxy metrics bind address
-  metricsBindAddress: 0.0.0.0
-name: local-kind-cluster
+name: taccitua
+# networking:
+#   apiServerPort: 6443
+#   podSubnet: "10.240.0.0/16"
+#   serviceSubnet: "10.0.0.0/16"
+# kubeadmConfigPatches:
+# - |-
+#   kind: ClusterConfiguration
+#   # configure controller-manager bind address
+#   controllerManager:
+#     extraArgs:
+#       bind-address: 0.0.0.0 # Disable localhost binding
+#       secure-port: "0"      # Disable the https
+#       port: "10257"         # Enable http on port 10257
+#   # configure etcd metrics listen address
+#   etcd:
+#     local:
+#       extraArgs:
+#         listen-metrics-urls: http://0.0.0.0:2381
+#   # configure scheduler bind address
+#   scheduler:
+#     extraArgs:
+#       bind-address: 0.0.0.0 # Disable localhost binding
+#       secure-port: "0"      # Disable the https
+#       port: "10259"         # Enable http on port 10259
+# - |-
+#   kind: KubeProxyConfiguration
+#   # configure proxy metrics bind address
+#   metricsBindAddress: 0.0.0.0
 nodes:
 - role: control-plane
-  # image: kindest/node:v1.25.2@sha256:f52781bc0d7a19fb6c405c2af83abfeb311f130707a0e219175677e366cc45d1
+  image: kindest/node:v1.25.3@sha256:f52781bc0d7a19fb6c405c2af83abfeb311f130707a0e219175677e366cc45d1
   kubeadmConfigPatches:
   - |
     kind: InitConfiguration
     nodeRegistration:
       kubeletExtraArgs:
         node-labels: "ingress-ready=true"
-  extraPortMappings:
-  - containerPort: 80
-    hostPort: 80
-    protocol: TCP
-  - containerPort: 443
-    hostPort: 443
-    protocol: TCP
+  # extraPortMappings:
+  # - containerPort: 80
+  #   hostPort: 80
+  #   protocol: TCP
+  # - containerPort: 443
+  #   hostPort: 443
+  #   protocol: TCP
 - role: worker
-  # image: kindest/node:v1.25.2@sha256:f52781bc0d7a19fb6c405c2af83abfeb311f130707a0e219175677e366cc45d1
+  image: kindest/node:v1.25.3@sha256:f52781bc0d7a19fb6c405c2af83abfeb311f130707a0e219175677e366cc45d1
+# - role: worker
+# - role: worker

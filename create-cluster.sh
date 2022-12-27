@@ -3,7 +3,7 @@
 set -e
 
 source preflight-checks.sh
-source ./destroy-cluster.sh
+
 # Catching CTRL+c
 trap "cleanup_cluster" SIGINT
 
@@ -16,4 +16,9 @@ echo "Required sw is already istalled: creating kind cluster..."
 
 kind create cluster --config ./manifests/create-cluster.yaml
 
-kubectl cluster-info --context kind-local-kind-cluster
+kubectl cluster-info --context kind-taccitua
+
+# Pre-installing workloads checks...
+echo "Waiting for all nodes to be ready..."
+kubectl wait --for=condition=Ready nodes --all --timeout=600s
+echo

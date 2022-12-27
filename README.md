@@ -16,7 +16,7 @@ Seguono versioni SW sulla mia PDL:
 
 - kind:
   ```
-  kind v0.11.1 go1.17.6 linux/amd64
+  kind v0.17.0 go1.19.2 linux/amd64
   ```
 
 - Helm:

@@ -10,6 +10,6 @@ cleanup_cluster() {
     echo
 
     echo "Destroying kind cluster..."
-    kind delete cluster --name local-kind-cluster || true
+    kind delete cluster --name taccitua || true
     echo
 }
