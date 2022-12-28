@@ -2,6 +2,7 @@
 
 set -e
 
+source destroy-cluster.sh
 source preflight-checks.sh
 
 # Catching CTRL+c
@@ -14,7 +15,9 @@ fi
 
 echo "Required sw is already istalled: creating kind cluster..."
 
-kind create cluster --config ./manifests/create-cluster.yaml
+kind create cluster \
+    --config ./manifests/create-cluster.yaml \
+    --retain # Useful for troubleshooting
 
 kubectl cluster-info --context kind-taccitua
 

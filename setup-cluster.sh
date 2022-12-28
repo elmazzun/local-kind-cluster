@@ -4,7 +4,7 @@ set -e
 
 source ./constants.sh
 source ./destroy-cluster.sh
-# Catching CTRL+c
+# Catching CTRL+c will destroy the cluster
 trap "cleanup_cluster" SIGINT
 
 if [[ "$INGRESS" = true ]]; then
@@ -17,12 +17,12 @@ if [[ "$INGRESS" = true ]]; then
         --for=condition=ready pod --selector=app.kubernetes.io/component=controller \
         --timeout="$TIMEOUT_READINESS"
     echo
-fi
 
-echo "[3/14] Deploying test deployment..."
-kubectl create -f manifests/test-ingress/test-deploy.yaml
-# kubectl create -f manifests/test-services-between-namespaces/test-deploy.yaml
-echo
+    echo "[3/14] Deploying test deployment..."
+    kubectl create -f manifests/test-ingress/test-deploy.yaml
+    # kubectl create -f manifests/test-services-between-namespaces/test-deploy.yaml
+    echo
+fi
 
 if [[ "$DASHBOARD" = true ]]; then
     echo "[4/14] Adding k8s dashboard Helm chart..."
@@ -43,7 +43,7 @@ if [[ "$DASHBOARD" = true ]]; then
     echo
 
     echo "[7/14] Adding user for k8s dashboard..."
-    kubectl apply -f manifests/add-user-to-dashboard.yaml
+    kubectl apply -f manifests/add-user-to-dashboard.yaml -n "$K8S_DASHBOARD_NAMESPACE"
     echo
 
     echo "[8/14] Getting user secret in order to login to k8s dashboard..."
@@ -63,7 +63,7 @@ if [[ "$DASHBOARD" = true ]]; then
     echo
 
     echo "[11/14] Starting background k8s proxy server..."
-    kubectl proxy
+    kubectl proxy &
     echo
 fi
 
@@ -75,6 +75,10 @@ if [[ "$PROMETHEUS" = true ]]; then
         --repo https://prometheus-community.github.io/helm-charts \
         kube-prometheus-stack kube-prometheus-stack \
         --values - <<EOF
+# Keep things out for a faster startup
+alertmanager:
+  enabled: false
+# Some configs
 kubeEtcd:
   service:
     targetPort: 2381
@@ -98,10 +102,10 @@ EOF
         --selector=app.kubernetes.io/instance=kube-prometheus-stack-prometheus \
         --timeout="$TIMEOUT_READINESS"
 
-    kubectl wait --namespace="$PROMETHEUS_NAMESPACE" \
-        --for=condition=ready pod \
-        --selector=app.kubernetes.io/instance=kube-prometheus-stack-alertmanager \
-        --timeout="$TIMEOUT_READINESS"
+    # kubectl wait --namespace="$PROMETHEUS_NAMESPACE" \
+    #     --for=condition=ready pod \
+    #     --selector=app.kubernetes.io/instance=kube-prometheus-stack-alertmanager \
+    #     --timeout="$TIMEOUT_READINESS"
     echo "Pods ready: Prometheus dashboard is at $PROMETHEUS_DASHBOARD_URL, no authentication is required"
     echo
 
