@@ -23,3 +23,8 @@ Seguono versioni SW sulla mia PDL:
   ```
   version.BuildInfo{Version:"v3.7.1+7.el8", GitCommit:"8f33223fe17957f11ba7a88b016bc860f034c4e6", GitTreeState:"clean", GoVersion:"go1.16.7"}
   ```
+
+## Releases
+
+- 0.1.0: tutto disabilitato (ingress, dashboard e prometheus); questo è il punto  
+         di partenza in cui si può iniziare a sviluppare
