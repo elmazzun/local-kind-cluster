@@ -9,7 +9,14 @@ file `preflight-checks.sh`, lanciata all'avvio del cluster.
 
 ## Avvio
 
-`./create-cluster.sh && ./setup-cluster.sh`
+`$ ./create-cluster.sh && ./setup-cluster.sh`
+
+## Distruzione
+
+```bash
+$ source destroy-cluster.sh
+$ cleanup_cluster
+```
 
 ## Releases
 
