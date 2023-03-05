@@ -1,5 +1,5 @@
-readonly INGRESS=false
-readonly DASHBOARD=false
+readonly INGRESS=true
+readonly DASHBOARD=true
 readonly PROMETHEUS=false
 
 readonly K8S_DASHBOARD_URL="http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:dashboard-kubernetes-dashboard:https/proxy/#/login"

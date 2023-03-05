@@ -2,27 +2,14 @@
 
 Cluster locale Kubernetes IN Docker (kind) per sviluppi locali.
 
-La versione di Kubernetes in uso è la 1.25.2
-
 ## Requisiti
 
-go (1.17+), docker, [kind](https://kind.sigs.k8s.io/)
+I programmi necessari sono cercati dalla funzione `check_required_sw` nel  
+file `preflight-checks.sh`, lanciata all'avvio del cluster.
 
-Opzionalmente, Helm
+## Avvio
 
-## Versioni
-
-Seguono versioni SW sulla mia PDL:
-
-- kind:
-  ```
-  kind v0.17.0 go1.19.2 linux/amd64
-  ```
-
-- Helm:
-  ```
-  version.BuildInfo{Version:"v3.7.1+7.el8", GitCommit:"8f33223fe17957f11ba7a88b016bc860f034c4e6", GitTreeState:"clean", GoVersion:"go1.16.7"}
-  ```
+`./create-cluster.sh && ./setup-cluster.sh`
 
 ## Releases
 
