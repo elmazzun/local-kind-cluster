@@ -46,7 +46,6 @@ check_required_sw() {
         sudo usermod -aG docker "$USER"
         newgrp docker
 
-        # newgrp docker
         popd
     fi
 
