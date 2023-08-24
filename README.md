@@ -5,6 +5,10 @@ Kubernetes workloads.
 
 **Tested on a virtualized Debian 12.**
 
+**You may test this kind cluster in your local machine or you may use my**
+**[virtualized environment](https://github.com/elmazzun/debian-12-vm) where**
+**this repository is included as submodule**.
+
 Running `start.sh` will perform the following tasks:
 
 - before creating local cluster, the script will check if the following programs 
