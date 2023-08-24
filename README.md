@@ -48,3 +48,16 @@ Once the provisioning is done, you should have a working environment: you
         && kind delete cluster \
         && echo "OK!"
   ```
+
+An access token associated with the skooner-sa service account should be 
+created for each login after the first dashboard startup, copied and pasted 
+into the dashboard login page located at `http://localhost:80`.
+
+```bash
+# Copy/paste this token to the dashboard login page
+$ kubectl create token skooner-sa -n kube-system
+eyJh...wxyz
+```
+
+This is not optimal and I could integrate OIDC with the dashboard instead 
+of generating an access token every time I want to login to the dashboard.
