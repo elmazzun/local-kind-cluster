@@ -1,0 +1,4 @@
+nginx=true
+dashboard=true
+cilium=false
+operator_sdk=false

@@ -34,15 +34,15 @@ Running `start.sh` will perform the following tasks:
   `./manifests/cluster/create-cluster.yaml` and wait for all the Nodes to be 
   ready;
 
-- install the following components in the new local cluster:
+- install the components found in `config` file into the new local cluster:
 
-  - nginx (as IngressController)
+  - `nginx=true` will install nginx (as IngressController)
 
-  - metrics server (TODO)
+  - `dashboard=true` will install Skooner dashboard
 
-  - Skooner dashboard
+  - `cilium=true` will install Cilium
 
-  - Cilium (TODO)  
+  - `operator_sdk=true` will install Operator SDK (TODO)
 
 Once the provisioning is done, you should have a working environment: you can test such environment by running the following command and `OK!` string should be printed at the end.
 
