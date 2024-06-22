@@ -9,7 +9,7 @@ cleanup_cluster() {
     pkill -9 -f "kubectl port-forward" || true
     echo
 
-    helm repo remove metrics-server || true
+    # helm repo remove metrics-server || true
 
     kind delete cluster --name mylab || true
     echo

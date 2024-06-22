@@ -3,11 +3,19 @@
 A Kubernetes in Docker (KinD) cluster for local deployment and testing 
 Kubernetes workloads.
 
-**Tested on a virtualized Debian 12.**
+Tested on following environment:
 
-**You may test this kind cluster in your local machine or you may use my**
-**[virtualized environment](https://github.com/elmazzun/debian-12-vm) where**
-**this repository is included as submodule**.
+```bash
+$ lsb_release -a
+No LSB modules are available.
+Distributor ID:	Linuxmint
+Description:	Linux Mint 20.3
+Release:	20.3
+Codename:	una
+
+$ uname -r
+5.15.0-107-generic
+```
 
 Running `start.sh` will perform the following tasks:
 
@@ -26,19 +34,18 @@ Running `start.sh` will perform the following tasks:
   `./manifests/cluster/create-cluster.yaml` and wait for all the Nodes to be 
   ready;
 
-- sleep for 5 seconds;
-
 - install the following components in the new local cluster:
 
   - nginx (as IngressController)
 
-  - metrics server
+  - metrics server (TODO)
 
   - Skooner dashboard
 
-Once the provisioning is done, you should have a working environment: you 
-  can test such environment by running the following command and `OK!` string 
-  should be printed at the end.
+  - Cilium (TODO)  
+
+Once the provisioning is done, you should have a working environment: you can test such environment by running the following command and `OK!` string should be printed at the end.
+
   ```bash
   # The following command will perform the following task:
   # 1. pull and run the hello-world Docker image
@@ -53,15 +60,5 @@ Once the provisioning is done, you should have a working environment: you
         && echo "OK!"
   ```
 
-An access token associated with the skooner-sa service account should be 
-created for each login after the first dashboard startup, copied and pasted 
-into the dashboard login page located at `http://localhost:80`.
-
-```bash
-# Copy/paste this token to the dashboard login page
-$ kubectl create token skooner-sa -n kube-system
-eyJh...wxyz
-```
-
-This is not optimal and I could integrate OIDC with the dashboard instead 
-of generating an access token every time I want to login to the dashboard.
+An access token associated with the skooner-sa ServiceAccount is created after the first dashboard startup: such token is printed in `dashbooard-token.yaml` in project root directory, just copy and paste its `.status.token` value into the dashboard login page located at `http://localhost:80`.
+This is not optimal and I could integrate OIDC with the dashboard instead of generating an access token every time I want to login to the dashboard.
