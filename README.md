@@ -3,6 +3,14 @@
 A Kubernetes in Docker (KinD) cluster for local deployment and testing 
 Kubernetes workloads.
 
+⚠️⚠️⚠️
+
+This repository is designed as my personal cat litter box, where I experiment unsteadily and intermittently.
+
+**Clone this repository at your own risk.**
+
+⚠️⚠️⚠️
+
 Tested on following environment:
 
 ```bash
@@ -22,11 +30,11 @@ Running `start.sh` will perform the following tasks:
 - before creating local cluster, the script will check if the following programs 
   are installed in your machine and will (try to) install the missing ones:
 
-  - Docker
+  - Docker (Community Edition v24.0.5-1)
 
-  - kubectl
+  - kubectl (v1.28.0)
 
-  - Helm
+  - Helm (v3.12.3)
 
   - KinD
 
@@ -38,27 +46,11 @@ Running `start.sh` will perform the following tasks:
 
   - `nginx=true` will install nginx (as IngressController)
 
-  - `dashboard=true` will install Skooner dashboard
+  - `dashboard=true` will install Skooner dashboard. An access token associated with the skooner-sa ServiceAccount is created after the first dashboard startup: such token is printed in `dashbooard-token.yaml` in project root directory, just copy and paste its `.status.token` value into the dashboard login page located at `http://localhost:80`.
+This is not optimal and I could integrate OIDC with the dashboard instead of generating an access token every time I want to login to the dashboard.
 
   - `cilium=true` will install Cilium
 
   - `operator_sdk=true` will install Operator SDK (TODO)
 
-Once the provisioning is done, you should have a working environment: you can test such environment by running the following command and `OK!` string should be printed at the end.
-
-  ```bash
-  # The following command will perform the following task:
-  # 1. pull and run the hello-world Docker image
-  # 2. create a single-node KinD cluster
-  # 3. list the running containers in the VM
-  # 4. destroy the single-node KinD cluster created at step 2.
-  # 5. celebrate your working cluster with a heartening "OK!"
-  $ docker run hello-world \
-        && kind create cluster \
-        && docker ps \
-        && kind delete cluster \
-        && echo "OK!"
-  ```
-
-An access token associated with the skooner-sa ServiceAccount is created after the first dashboard startup: such token is printed in `dashbooard-token.yaml` in project root directory, just copy and paste its `.status.token` value into the dashboard login page located at `http://localhost:80`.
-This is not optimal and I could integrate OIDC with the dashboard instead of generating an access token every time I want to login to the dashboard.
+Once the provisioning is done, you should have a working environment.
