@@ -1,7 +1,0 @@
-apiVersion: kind.x-k8s.io/v1alpha4
-kind: Cluster
-name: mylab
-networking:
-  disableDefaultCNI: false
-nodes:
-  - role: control-plane

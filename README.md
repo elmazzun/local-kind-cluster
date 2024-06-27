@@ -44,11 +44,24 @@ Running `start.sh` will perform the following tasks:
 
 - install the components found in `config` file into the new local cluster:
 
-  - `nginx=true` will install nginx (as IngressController)
+  - `NGINX=true` will install nginx (as IngressController).
 
-  - `dashboard=true` will install Skooner dashboard. An access token associated with the skooner-sa ServiceAccount is created after the first dashboard startup: such token is printed in `dashbooard-token.yaml` in project root directory, just copy and paste its `.status.token` value into the dashboard login page located at `http://localhost:80`.
+  - `DASHBOARD=true` will install Skooner dashboard. An access token associated with the skooner-sa ServiceAccount is created after the first dashboard startup: such token is printed in `dashbooard-token.yaml` in project root directory, just copy and paste its `.status.token` value into the dashboard login page located from `http://localhost:8080` on.
 This is not optimal and I could integrate OIDC with the dashboard instead of generating an access token every time I want to login to the dashboard.
 
-  - `operator_sdk=true` will install Operator SDK (TODO)
+  - `OPERATOR_SDK=true` will install Operator SDK (TODO).
+
+  - `NUM_CLUSTERS` will create more clusters: each component (`NGINX`, `DASHBOARD`, ...) will be installed in every cluster.
+
+  - `EXTRA_MASTERS` will add more master nodes; by default a cluster is created with only one master node.
+
+  - `NUM_WORKERS` will add more worker nodes; by default, a cluster is created with only one worker node.
 
 Once the provisioning is done, you should have a working environment.
+
+**Following commands were necessary when creating more than one cluster:**
+
+```bash
+$ sudo sysctl fs.inotify.max_user_instances=1280 # It was 128
+$ sudo sysctl fs.inotify.max_user_watches=655360 # It was 65536
+```

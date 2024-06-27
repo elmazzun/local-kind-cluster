@@ -1,1 +1,3 @@
 dashboard.token
+kind-mylab-*-dashboard.token
+manifests/cluster/create-cluster-*.yaml

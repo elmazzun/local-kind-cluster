@@ -7,7 +7,7 @@ check_required_sw() {
 
         curl -Lo \
             kind \
-            https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-amd64
+            https://kind.sigs.k8s.io/dl/v0.23.0/kind-linux-amd64
 
         sudo install \
             -o "$USER" \
