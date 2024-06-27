@@ -41,8 +41,8 @@ Running `start.sh` will perform the following tasks:
 
   - `NGINX=true` will install nginx (as IngressController).
 
-  - `DASHBOARD=true` will install Skooner dashboard. An access token associated with the skooner-sa ServiceAccount is created after the first dashboard startup: such token is printed in `dashbooard-token.yaml` in project root directory, just copy and paste its `.status.token` value into the dashboard login page located from `http://localhost:9080` on.
-This is not optimal and I could integrate OIDC with the dashboard instead of generating an access token every time I want to login to the dashboard.
+  - `DASHBOARD=true` will install Skooner dashboard. An access token is created and printed in `*.token` file (located in root directory) for each cluster: copy and paste its content into the dashboard login page located from `http://localhost:9080` on.
+*This is not optimal and I could integrate OIDC with the dashboard instead of generating an access token every time I want to login to the dashboard.*
 
   - `OPERATOR_SDK=true` will install Operator SDK (TODO).
 
@@ -51,8 +51,6 @@ This is not optimal and I could integrate OIDC with the dashboard instead of gen
   - `EXTRA_MASTERS` will add more master nodes; by default a cluster is created with only one master node.
 
   - `NUM_WORKERS` will add more worker nodes; by default, a cluster is created with only one worker node.
-
-Once the provisioning is done, you should have a working environment.
 
 **Following commands were necessary when creating more than one cluster:**
 
