@@ -1,4 +1,6 @@
-nginx=true
-dashboard=true
-cilium=false
-operator_sdk=false
+NGINX=true
+DASHBOARD=true
+CILIUM=false
+OPERATOR_SDK=false
+EXTRA_MASTERS=0
+NUM_WORKERS=1

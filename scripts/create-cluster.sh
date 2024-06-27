@@ -11,7 +11,7 @@ trap "cleanup_cluster" SIGINT
 if ! check_required_sw; then
     echo "Installing required sw before creating kind cluster..."
 else
-    echo "Required sw is already istalled: creating kind cluster..."
+    echo "Required sw is already installed: creating kind cluster..."
 fi
 
 # If the cluster fails to create, try again with the --retain option 

@@ -11,6 +11,7 @@ echo "Hit CTRL+C in order to abort cluster init"
 
 function install_nginx() {
     # Install ingress nginx
+    echo ">>> $FUNCNAME"
     kubectl \
         apply -f \
         https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
@@ -22,6 +23,7 @@ function install_nginx() {
 }
 
 function install_dashboard() {
+    echo ">>> $FUNCNAME"
     kubectl \
         apply -f \
         https://raw.githubusercontent.com/skooner-k8s/skooner/master/kubernetes-skooner.yaml
@@ -51,7 +53,12 @@ function install_dashboard() {
         -o jsonpath='{.status.token}{"\n"}' > dashboard.token
 }
 
+function install_operator_sdk() {
+    echo ">>> $FUNCNAME"
+}
+
 function install_cilium() {
+    echo ">>> $FUNCNAME"
     docker pull quay.io/cilium/cilium:v1.14.1
 
     kind load docker-image quay.io/cilium/cilium:v1.14.1 -n mylab
@@ -97,8 +104,14 @@ EOF
     cilium status --wait
 }
 
-[[ $nginx == true ]] && install_nginx || echo "Skipping nginx installation"
+[[ $NGINX == true ]] && install_nginx \
+    || echo "Skipping nginx installation"
 
-[[ $dashboard == true ]] && install_dashboard || echo "Skipping dashboard installation"
+[[ $DASHBOARD == true ]] && install_dashboard \
+    || echo "Skipping dashboard installation"
 
-[[ $cilium == true ]] && install_cilium || echo "Skipping cilium installation"
+[[ $CILIUM == true ]] && install_cilium \
+    || echo "Skipping cilium installation"
+
+[[ $OPERATOR_SDK == true ]] && install_operator_sdk \
+    || echo "Skipping Operator SDK installation"

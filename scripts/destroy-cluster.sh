@@ -7,7 +7,14 @@ cleanup_cluster() {
     echo "Stopping kubectl port-foward..."
     pkill -9 -f "kubectl port-forward" || true
 
-    # helm repo remove metrics-server || true
-
     kind delete cluster --name mylab || true
+
+    # Unsetting env vars
+    while read -r line; do
+        [[ -n "$line" ]] && export "$line" && echo "unset $line"
+    done < config
+
+    # Restore minimal Cluster configuration
+    cp ./manifests/cluster/create-cluster.yaml.template \
+      ./manifests/cluster/create-cluster.yaml
 }
