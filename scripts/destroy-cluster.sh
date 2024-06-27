@@ -6,7 +6,7 @@ cleanup_cluster() {
 
     for ((cluster = 0; cluster < total_clusters; cluster++)); do
         # Clean kind:Cluster files
-        kind delete cluster --name mylab-$cluster
+        kind delete cluster --name mylab-$cluster || true
 
         # Delete clusters
         rm -f ./manifests/cluster/create-cluster-$cluster.yaml

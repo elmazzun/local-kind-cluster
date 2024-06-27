@@ -17,8 +17,8 @@ while read -r line; do
     [[ -n "$line" ]] && export "$line" && echo "export $line"
 done < config
 
-host_http_port=8080
-host_https_port=8443
+host_http_port=9080
+host_https_port=9443
 
 # Create as many kind:Cluster files as required from NUM_CLUSTERS
 for ((cluster = 0; cluster < NUM_CLUSTERS; cluster++)); do

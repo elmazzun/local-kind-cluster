@@ -41,7 +41,7 @@ Running `start.sh` will perform the following tasks:
 
   - `NGINX=true` will install nginx (as IngressController).
 
-  - `DASHBOARD=true` will install Skooner dashboard. An access token associated with the skooner-sa ServiceAccount is created after the first dashboard startup: such token is printed in `dashbooard-token.yaml` in project root directory, just copy and paste its `.status.token` value into the dashboard login page located from `http://localhost:8080` on.
+  - `DASHBOARD=true` will install Skooner dashboard. An access token associated with the skooner-sa ServiceAccount is created after the first dashboard startup: such token is printed in `dashbooard-token.yaml` in project root directory, just copy and paste its `.status.token` value into the dashboard login page located from `http://localhost:9080` on.
 This is not optimal and I could integrate OIDC with the dashboard instead of generating an access token every time I want to login to the dashboard.
 
   - `OPERATOR_SDK=true` will install Operator SDK (TODO).
