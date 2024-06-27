@@ -49,8 +49,6 @@ Running `start.sh` will perform the following tasks:
   - `dashboard=true` will install Skooner dashboard. An access token associated with the skooner-sa ServiceAccount is created after the first dashboard startup: such token is printed in `dashbooard-token.yaml` in project root directory, just copy and paste its `.status.token` value into the dashboard login page located at `http://localhost:80`.
 This is not optimal and I could integrate OIDC with the dashboard instead of generating an access token every time I want to login to the dashboard.
 
-  - `cilium=true` will install Cilium
-
   - `operator_sdk=true` will install Operator SDK (TODO)
 
 Once the provisioning is done, you should have a working environment.

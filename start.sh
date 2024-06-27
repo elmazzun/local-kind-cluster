@@ -12,7 +12,7 @@ if ! [[ -f ./config ]]; then
 fi
 
 # Exporting variables in config files so that they can be seen in 
-# setup-cluster.sh[[ -n "$line" ]] && 
+# other scripts
 while read -r line; do
     [[ -n "$line" ]] && export "$line" && echo "export $line"
 done < config
@@ -41,12 +41,6 @@ if [[ $NGINX == true ]]; then
         {"containerPort": 443, "hostPort": 443, "protocol": "TCP"}
     ]
     }' -i manifests/cluster/create-cluster.yaml
-fi
-
-# Cilium requires the default CNI to be disabled
-if [[ $CILIUM == true ]]; then
-    yq eval '.networking.disableDefaultCNI = false' \
-        -i manifests/cluster/create-cluster.yaml
 fi
 
 ./scripts/create-cluster.sh && \
