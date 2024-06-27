@@ -1,7 +1,6 @@
 # KinD cluster
 
-A Kubernetes in Docker (KinD) cluster for local deployment and testing 
-Kubernetes workloads.
+Create local Kubernetes in Docker (KinD) clusters for deployment and testing.
 
 ⚠️⚠️⚠️
 
@@ -38,11 +37,7 @@ Running `start.sh` will perform the following tasks:
 
   - KinD
 
-- create the local cluster according to the cluster configuration defined in 
-  `./manifests/cluster/create-cluster.yaml` and wait for all the Nodes to be 
-  ready;
-
-- install the components found in `config` file into the new local cluster:
+- install components found in `config` file into all new local clusters:
 
   - `NGINX=true` will install nginx (as IngressController).
 
