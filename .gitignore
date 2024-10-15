@@ -1,3 +1,37 @@
-dashboard.token
-kind-mylab-*-dashboard.token
-manifests/cluster/create-cluster-*.yaml
+# Escludi i file di stato di Terraform
+*.tfstate
+*.tfstate.*
+
+# Escludi i file di backup di Terraform
+*.backup
+
+# Escludi i file di crash di Terraform
+crash.log
+
+# Escludi il file di pianificazione di Terraform
+*.tfplan
+
+# Escludi i file di configurazione personali
+.terraform/
+.terraform.lock.hcl
+
+# Escludi le chiavi private
+*.pem
+*.key
+
+# Escludi i file di output locali
+terraform.tfvars
+terraform.tfvars.json
+
+# Escludi i log di esecuzione locali
+*.log
+
+# Escludi i file temporanei creati da editor (es. Vim)
+*.swp
+*.swo
+*.swn
+*~
+
+# Escludi file di sistema
+.DS_Store
+Thumbs.db

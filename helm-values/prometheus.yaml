@@ -1,0 +1,9 @@
+kubeEtcd:
+  service:
+    targetPort: 2381
+kubeControllerManager:  
+  service:
+    targetPort: 10257
+kubeScheduler:
+  service:
+    targetPort: 10259
