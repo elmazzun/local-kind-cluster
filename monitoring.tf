@@ -8,7 +8,7 @@ resource "helm_release" "monitoring" {
   create_namespace = true
   wait             = true
   timeout          = 300
-  depends_on       = [kind_cluster.new]
+  depends_on       = [kind_cluster.default]
 
   values = [
     "${file("./helm-values/prometheus.yaml")}"

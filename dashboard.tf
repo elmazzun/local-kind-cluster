@@ -6,7 +6,7 @@ resource "helm_release" "kubernetes-dashboard" {
   create_namespace = true
   wait             = true
   timeout          = 180
-  depends_on       = [kind_cluster.new]
+  depends_on       = [kind_cluster.default]
 }
 
 # Use secret in dashboard-admin.token in order to login to dashboard
@@ -26,7 +26,7 @@ resource "null_resource" "extract-token" {
     command = <<EOF
       kubectl get secret admin-user \
           -n kubernetes-dashboard \
-          -o jsonpath='{.data.token}{"\n"}' | base64 -d > ${path.module}//dashboard-admin.token
+          -o jsonpath='{.data.token}{"\n"}' | base64 -d > ${path.module}/dashboard-admin.token
     EOF
   }
 

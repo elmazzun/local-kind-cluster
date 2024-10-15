@@ -1,8 +1,4 @@
-# Since this is a small project, I am going to include ALL resources in this 
-# file instead of creating a file for each kind of wanted resource (eg: 
-# network.tf, storage.tf, ...)
-
-resource "kind_cluster" "new" {
+resource "kind_cluster" "default" {
   name = var.cluster_name_prefix
   node_image = var.nodes_image
   wait_for_ready = true
@@ -62,30 +58,6 @@ resource "kind_cluster" "new" {
       }
     }
 
-    #   extra_port_mappings {
-    #     container_port = 30443
-    #     host_port      = 30443
-    #   }
-
-    #   extra_port_mappings {
-    #     container_port = 30080
-    #     host_port      = 30080
-    #   }
-
-    #   extra_port_mappings {
-    #     container_port = 30021
-    #     host_port      = 30021
-    #   }
-    # }
-
-    # node {
-    #   role = "control-plane"
-    # }
-
-    # node {
-    #   role = "control-plane"
-    # }
-
     node {
       role = "worker"
     }
@@ -93,9 +65,5 @@ resource "kind_cluster" "new" {
     node {
       role = "worker"
     }
-
-    # node {
-    #   role = "worker"
-    # }
   }
 }
