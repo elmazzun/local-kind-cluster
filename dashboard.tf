@@ -3,6 +3,7 @@ resource "helm_release" "kubernetes-dashboard" {
   repository       = "https://kubernetes.github.io/dashboard"
   chart            = "kubernetes-dashboard"
   namespace        = "kubernetes-dashboard"
+  version          = var.helm_chart_dashboard_version
   create_namespace = true
   wait             = true
   timeout          = 180

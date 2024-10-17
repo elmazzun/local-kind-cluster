@@ -4,7 +4,7 @@ resource "helm_release" "monitoring" {
   repository       = "https://prometheus-community.github.io/helm-charts"
   chart            = "kube-prometheus-stack"
   namespace        = "monitoring"
-  # version          = TODO pin current version
+  version          = var.helm_chart_prometheus_version
   create_namespace = true
   wait             = true
   timeout          = 300

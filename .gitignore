@@ -35,3 +35,5 @@ terraform.tfvars.json
 # Escludi file di sistema
 .DS_Store
 Thumbs.db
+
+main.plan
