@@ -4,7 +4,7 @@ Create a [kind](https://kind.sigs.k8s.io/) cluster using
 [tehcyx](https://github.com/tehcyx/terraform-provider-kind)
 Terraform provider.
 
-Install the following components via [Helm](https://registry.terraform.io/providers/hashicorp/helm/latest)
+Following components will be installed via [Helm](https://registry.terraform.io/providers/hashicorp/helm/latest)
 Terraform provisioner:
 
 - [kubernetes dashboard](https://github.com/kubernetes/dashboard): a general-
@@ -12,6 +12,10 @@ purpose web UI for Kubernetes clusters
 
 - [Prometheus stack (kube-prometheus-stack)](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack): 
 AlertManager, Grafana, kube-state-metrics, Node Exporter, Prometheus
+
+`Operator Lifecycle Manager (OLM)` will be installed via `operator-sdk` so be 
+sure to [install OLM CLI](https://sdk.operatorframework.io/docs/installation/) 
+before running Terraform plan.
 
 # Create kind cluster
 
