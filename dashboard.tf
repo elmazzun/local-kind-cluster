@@ -7,7 +7,7 @@ resource "helm_release" "kubernetes-dashboard" {
   create_namespace = true
   wait             = true
   timeout          = 180
-  depends_on       = [kind_cluster.default]
+  depends_on       = [helm_release.cilium]
 }
 
 # Use secret in dashboard-admin.token in order to login to dashboard

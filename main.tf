@@ -1,12 +1,16 @@
 resource "kind_cluster" "default" {
   name = var.cluster_name_prefix
   node_image = var.nodes_image
-  wait_for_ready = true
+  wait_for_ready = false
   kubeconfig_path = pathexpand("/tmp/config")
 
   kind_config {
     kind = "Cluster"
     api_version = "kind.x-k8s.io/v1alpha4"
+
+    networking {
+      disable_default_cni = true
+    }
 
     node {
       role = "control-plane"

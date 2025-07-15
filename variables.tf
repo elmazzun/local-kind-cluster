@@ -7,13 +7,19 @@ variable "cluster_name_prefix" {
 variable "nodes_image" {
   type        = string
   description = "Nodes image versions"
-  default     = "kindest/node:v1.30.0"
+  default     = "kindest/node:v1.32.2"
 }
 
 variable "helm_chart_dashboard_version" {
   type        = string
   description = "Kubernetes dashboard Helm chart version"
-  default     = "7.8.0"
+  default     = "7.13.0"
+}
+
+variable "helm_chart_cilium_version" {
+  type        = string
+  description = "Cilium Helm chart version"
+  default     = "1.17.5"
 }
 
 variable "helm_chart_prometheus_version" {

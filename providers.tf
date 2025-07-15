@@ -1,33 +1,36 @@
 terraform {
   required_providers {
+    # kind terraform provider 0.9.0:
+    # - kind actual version: 0.27.0
+    # - default node image: 1.32.2
     kind = {
       source  = "tehcyx/kind"
-      version = "0.6.0"
+      version = "0.9.0"
     }
 
     docker = {
       source  = "kreuzwerker/docker"
-      version = "3.0.2"
+      version = "3.6.2"
     }
 
     helm = {
       source = "hashicorp/helm"
-      version = "2.15.0"
+      version = "3.0.2"
     }
 
     null = {
       source = "hashicorp/null"
-      version = "3.2.2"
+      version = "3.2.4"
     }
   }
-  required_version = "~> 1.9.4"
+  required_version = "1.12.2"
 }
 
 provider "kind" {
 }
 
 provider "helm" {
-  kubernetes {
+  kubernetes = {
     config_path = pathexpand("/tmp/config")
   }
 }
