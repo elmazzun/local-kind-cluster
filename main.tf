@@ -10,6 +10,7 @@ resource "kind_cluster" "default" {
 
     networking {
       disable_default_cni = true
+      kube_proxy_mode = "none"
     }
 
     node {

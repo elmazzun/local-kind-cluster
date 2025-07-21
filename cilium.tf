@@ -18,7 +18,7 @@ resource "null_resource" "load-cilium-image" {
   provisioner "local-exec" {
     command = <<EOF
       docker pull quay.io/cilium/cilium:v1.17.5
-      kind load docker-image quay.io/cilium/cilium:v1.17.5 --name test-cluster
+      kind load docker-image quay.io/cilium/cilium:v1.17.5 --name cluster
     EOF
   }
 

@@ -1,4 +1,26 @@
+k8sServiceHost: 'cluster-control-plane'
+k8sServicePort: 6443
+
+kubeProxyReplacement: true
+
 image:
   pullPolicy: IfNotPresent
 ipam:
   mode: kubernetes
+
+# # Cilium-agent (DaemonSet) metrics
+# prometheus:
+#   enabled: true
+
+# # Cilium Operator configs
+# operator:
+#   # Enable metrics
+#   prometheus:
+#     enabled: true
+
+# # Configs for Istio
+# cni:
+#   exclusive: false
+# # https://www.solo.io/blog/istio-cilium-kube-proxy-replacement
+# socketLB:
+#   hostNamespaceOnly: true

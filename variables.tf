@@ -1,7 +1,7 @@
 variable "cluster_name_prefix" {
   type        = string
   description = "The name of the cluster"
-  default     = "test-cluster"
+  default     = "cluster"
 }
 
 variable "nodes_image" {
