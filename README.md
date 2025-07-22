@@ -16,6 +16,8 @@ and observability.
 - [Prometheus stack (kube-prometheus-stack)](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack): 
 AlertManager, Grafana, kube-state-metrics, Node Exporter, Prometheus
 
+![image info](./graph.png)
+
 # Create kind cluster
 
 Run the following commands in your shell:
