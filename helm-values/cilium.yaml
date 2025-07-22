@@ -8,15 +8,15 @@ image:
 ipam:
   mode: kubernetes
 
-# # Cilium-agent (DaemonSet) metrics
-# prometheus:
-#   enabled: true
+# Cilium-agent (DaemonSet) metrics
+prometheus:
+  enabled: true
 
-# # Cilium Operator configs
-# operator:
-#   # Enable metrics
-#   prometheus:
-#     enabled: true
+# Cilium Operator configs
+operator:
+  # Enable metrics
+  prometheus:
+    enabled: true
 
 # # Configs for Istio
 # cni:

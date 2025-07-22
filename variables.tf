@@ -25,5 +25,5 @@ variable "helm_chart_cilium_version" {
 variable "helm_chart_prometheus_version" {
   type        = string
   description = "Prometheus stack Helm chart version"
-  default     = "65.2.0"
+  default     = "75.12.0"
 }
