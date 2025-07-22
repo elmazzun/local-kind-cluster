@@ -8,11 +8,6 @@ terraform {
       version = "0.9.0"
     }
 
-    docker = {
-      source  = "kreuzwerker/docker"
-      version = "3.6.2"
-    }
-
     helm = {
       source = "hashicorp/helm"
       version = "3.0.2"
