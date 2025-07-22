@@ -2,8 +2,8 @@
 
 ## Install
 
+- [X] monitoring stack
 - [ ] Istio
-- [ ] monitoring stack
 - [ ] ArgoCD
 - [ ] self-hosted Git `gitea`
 - [ ] `bookinfo` (with Argo)
