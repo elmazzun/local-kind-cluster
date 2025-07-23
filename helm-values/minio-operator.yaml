@@ -1,0 +1,12 @@
+operator:
+  image:
+    repository: quay.io/minio/operator
+    tag: v7.0.1
+    pullPolicy: IfNotPresent
+
+  sidecarImage:
+    repository: quay.io/minio/operator-sidecar
+    tag: v7.0.1
+    pullPolicy: IfNotPresent
+
+  replicaCount: 1

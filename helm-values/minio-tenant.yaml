@@ -1,0 +1,27 @@
+tenant:
+  name: myminio
+
+  image:
+    repository: quay.io/minio/minio
+    tag: RELEASE.2025-04-08T15-41-24Z
+    pullPolicy: IfNotPresent
+
+  configSecret:
+    name: myminio-env-configuration
+    accessKey: minio
+    secretKey: minio123
+
+  pools:
+    - servers: 2
+      name: pool
+      volumesPerServer: 2
+      size: 512Mi
+      storageClassName: minio
+
+  mountPath: /export
+  subPath: /data
+
+  metrics:
+    enabled: false
+    port: 9000
+    protocol: http

@@ -1,0 +1,25 @@
+distributor:
+  config:
+    log_received_spans:
+      enabled: true
+
+gateway:
+  enabled: true
+
+ingester:
+  persistence:
+    inMemory: true
+    size: 128Mi
+
+minio:
+  enabled: false
+
+persistence:
+  enabled: false
+
+traces:
+  otlp:
+    http:
+      enabled: true
+    grpc:
+      enabled: true

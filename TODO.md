@@ -5,7 +5,9 @@
 - [X] cluster monitoring stack
 - [X] Cilium monitoring stack
     - [ ] this should be federated to cluster monitoring stack
-- [ ] Istio
+- [X] Istio
+- [X] Kiali
+    - [X] link Kiali to cluster monitoring stack
 - [X] ArgoCD
     - [ ] point ArgoCD to self-hosted gitea
 - [ ] self-hosted Git `gitea`
